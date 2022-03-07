@@ -1,6 +1,6 @@
 import { IsEmail, IsNotEmpty, IsString, MaxLength } from "class-validator";
 
-export class FeedbackDto {
+export class CreateFeedbackDto {
 
     @IsString()
     @IsNotEmpty()

@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "Feedback" (
+CREATE TABLE "feedbacks" (
     "id" SERIAL NOT NULL,
     "firstName" TEXT NOT NULL,
     "email" TEXT NOT NULL,
@@ -7,5 +7,5 @@ CREATE TABLE "Feedback" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Feedback_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "feedbacks_pkey" PRIMARY KEY ("id")
 );

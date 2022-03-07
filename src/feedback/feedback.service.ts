@@ -1,12 +1,17 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
-import { FeedbackDto } from "./dto";
+import { CreateFeedbackDto, UpdateFeedbackDto } from "./dto";
+import { Prisma } from ".prisma/client";
 
 @Injectable()
 export class FeedbackService {
     constructor(private prisma: PrismaService) {}
-    async postFeedback(dto: FeedbackDto) {
-        
+
+    getFeedbacks() {
+        return this.prisma.feedback.findMany()
+    }
+
+    async postFeedback(dto: CreateFeedbackDto) {
         const feedback = await this.prisma.feedback.create({
             data: {
                 firstName: dto.firstName,
@@ -15,5 +20,26 @@ export class FeedbackService {
             }
         })
         return feedback;
+    }
+
+    updateFeedbackbyId(feedbackId: number, dto: UpdateFeedbackDto) {
+        return this.prisma.feedback.update({
+            where: {
+              id: feedbackId,
+            },
+            data: {
+              ...dto,
+            },
+          });
+    }
+
+    async deleteFeedbackById(feedbackId: number) {
+        const feedback =
+
+        await this.prisma.feedback.delete({
+            where: {
+                id: feedbackId
+            }
+        });
     }
 }
